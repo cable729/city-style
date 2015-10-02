@@ -1,0 +1,44 @@
+<head>
+  <title>City Style</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <div class="outer">
+    <div class="logo"></div>
+    <h1 class="title">City Style</h1>
+    <div class="subtitle">Select a job to see what life would be like</div>
+    {{> jobList}}
+  </div>
+</body>
+
+<template name="jobList">
+  <ol class="job-list">
+    {{#each jobs}}
+      {{> job}}
+    {{/each}}
+  </ol>
+
+  {{#if selectedName}}
+    <div class="details">
+        {{> map}}
+    </div>
+  {{else}}
+    <div class="message">Click a job to select</div>
+  {{/if}}
+</template>
+
+<template name="job">
+  <li class="job {{#if isSelected}} selected {{/if}}">
+    <span class="name">{{name}}</span>
+    <span class="score">{{location}}</span>
+  </li>
+</template>
+
+<template name="map">
+    <div class="map-container">
+        {{> googleMap name="map" options=mapOptions}}
+    </div>
+</template>
+
