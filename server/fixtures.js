@@ -12,9 +12,9 @@ function createJobFixtures() {
         location: "Santa Monica, CA"
     });
     Jobs.insert({
-        name: "Mountain Sun Pub & Brewery",
-        latitude: 40.0183904,
-        longitude: -105.27721,
+        name: "ShipCompliant",
+        latitude: 40.016512,
+        longitude: -105.279842,
         location: "Boulder, CO"
     });
     Jobs.insert({

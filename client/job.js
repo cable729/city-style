@@ -1,4 +1,4 @@
-const selectedJob = "SELECTED_JOB";
+const SELECTED_JOB = "SELECTED_JOB";
 
 Template.jobList.helpers({
     jobs: function () {
@@ -17,17 +17,22 @@ Template.job.helpers({
 });
 
 function getSelectedJobId() {
-    return Session.get(selectedJob);
+    return Session.get(SELECTED_JOB);
 }
 
 function setSelectedJobId(id) {
-    Session.set(selectedJob, id);
+    Session.set(SELECTED_JOB, id);
 }
 
 getJobLocation = function() {
     var id = getSelectedJobId();
     var job = Jobs.findOne(id);
     return new google.maps.LatLng(job.latitude, job.longitude);
+};
+
+getJobName = function() {
+    var job = Jobs.findOne(getSelectedJobId());
+    return job.name;
 };
 
 Template.job.events({
